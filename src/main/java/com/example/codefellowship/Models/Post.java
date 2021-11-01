@@ -6,10 +6,8 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
     @ManyToOne
-    ApplicationUser owner;
-
+    private ApplicationUser owner;
     private String body;
     private String timeStamp;
 
@@ -25,16 +23,34 @@ public class Post {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public ApplicationUser getOwner() {
         return owner;
+    }
+
+    public void setOwner(ApplicationUser owner) {
+        this.owner = owner;
     }
 
     public String getBody() {
         return body;
     }
 
+    public void setBody(String body) {
+        this.body = body;
+    }
+
     public String getTimeStamp() {
         return timeStamp;
     }
 
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+    public String toString() {
+        return String.format("At %s, %s wrote: %s ", this.timeStamp, this.owner.getUsername(), this.body);
+    }
 }

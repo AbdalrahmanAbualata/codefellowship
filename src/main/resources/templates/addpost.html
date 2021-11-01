@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add a Post</title>
+</head>
+<header th:insert="header.html :: header"></header>
+
+<body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
+background-size: cover">
+<h2 style="text-align:center; color:white; font-size:xx-large">Add A post!</h2>
+<br>
+<br>
+<div style="text-align:center; margin-left:auto; margin-right:auto;  width:500px; margin-bottom:20px">
+
+    <form action="/addPost" method="POST">
+        <textarea name="body" id="body" style="color:black; font-size:x-large"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="Create Post">
+    </form>
+</div>
+
+
+</body>
+</html>
