@@ -18,7 +18,7 @@ public class ApplicationUser implements UserDetails{
         private String lastName;
         private String dateOfBirth;
         private String bio;
-         @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+         @OneToMany(mappedBy = "owner",cascade=CascadeType.ALL)
          private List<Post> posts;
 
 
@@ -32,6 +32,7 @@ public class ApplicationUser implements UserDetails{
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.bio = bio;
+
     }
 
     public long getId() {

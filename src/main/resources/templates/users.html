@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Page</title>
+</head>
+<body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
+background-size: cover">
+<header th:insert="header.html :: header"></header>
+<h2>Welcome <span th:text=${usernameForVisitor}></span> To User's Details Page..</h2>
+<div>
+    <h2>This is <span th:text=${userForOwner.username}></span>'s page</h2>
+    <p>Profile picture: </p>
+    <img src="https://www.computerhope.com/jargon/g/guest-user.jpg" alt="user's image">
+    <p>Username: <span th:text=${userForOwner.username}></span></p>
+    <p>First Name: <span th:text=${userForOwner.firstName}></span></p>
+    <p>Last Name: <span th:text=${userForOwner.lastName}></span></p>
+    <p>Date Of Birth: <span th:text=${userForOwner.dateOfBirth}></span></p>
+    <p>Bio: <span th:text=${userForOwner.bio}></span></p>
+
+    <h2>My Recent Posts</h2>
+    <br>
+    <br>
+    <ul>
+        <li th:each="post : ${userForOwner.posts}" th:text="${post}"></li>
+    </ul>
+</div>
+<div  th:if="${usernameForVisitor==userForOwner.username}">
+    <h3>helooooooooo you are me </h3>
+</div>
+
+<br>
+<br>
+
+
+</body>
+</html>

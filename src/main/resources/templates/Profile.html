@@ -6,8 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User's Page</title>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            th:href="@{~/styles/style.css}"
+    />
 </head>
-<body>
+<body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
+background-size: cover">
 <header th:insert="header.html :: header"></header>
 <div th:if="${user != null}">
     <h2>This is <span th:text=${user.username}></span>'s page</h2>
@@ -18,6 +24,11 @@
     <p>Last Name: <span th:text=${user.lastName}></span></p>
     <p>Date Of Birth: <span th:text=${user.dateOfBirth}></span></p>
     <p>Bio: <span th:text=${user.bio}></span></p>
+    <h2>My Recent Posts</h2>
+    <br>
+    <ul>
+        <li th:each="post : ${user.posts}" th:text="${post}"></li>
+    </ul>
 </div>
 <div th:unless="${user != null}">
     <h2>Ooops, User Id Is Not Exist..</h2>
