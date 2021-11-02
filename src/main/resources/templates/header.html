@@ -4,27 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<!--    <link rel="stylesheet" href="style.css">-->
-    <link
-            rel="stylesheet"
-            type="text/css"
-            th:href="@{~/styles/style.css}"
-    />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-
 <body>
-
-<header>
+<header >
 <!--    <nav th:if="${username}">-->
     <nav sec:authorize="isAuthenticated()">
         <ul>
             <li><a href="/">Home</a></li>
             <li> <a href="/Profile">See Your Profile</a></li>
+            <li> <a href="/users">all users</a></li>
+            \<li><a href="/feed">View Your Feed</a></li>
             <li> <a href="/addPost">Add Post</a></li>
             <li><a href="/perform_logout">Logout</a></li>
-<!--            <li><h1>Hello, [[${username}]]!</h1></li>-->
-            <div th:text="${#authentication.name}">
-            </div>
+            <li><h1>Hello, [[${#authentication.name}]]!</h1></li>
+<!--            <div th:text="${#authentication.name}">-->
+<!--            </div>-->
         </ul>
 
     </nav>

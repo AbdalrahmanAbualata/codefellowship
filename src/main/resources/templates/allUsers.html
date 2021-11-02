@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All users</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<header th:insert="header.html :: header"></header>
+    <h2 sec:authentication="name"></h2>
+<!--    <div th:replace="fragments/header :: nav"></div>-->
+<h1>
+    Users:
+</h1>
+<div class="row">
+
+    <div  th:if="${user.username} != ${#authentication.name}" th:each="user:${users}" class="card" style="width: 18rem;margin: 10px;">
+        <h5 class=" card-title" ><a th:href="${'/users/' + user.id}">[[${user.username}]]</a></h5>
+        <img class="card-img-top" th:src="@{/img/profile_avatar_icon.png}" alt="Card image cap">
+        <div class="card-body">
+<!--            <h5 th:text="${user.username}" class="card-title"></h5>-->
+            <p th:text="${user.bio}" class="card-text"></p>
+<!--            <a th:href="${'/users/'+user.getId}" class="btn btn-primary">show user</a>-->
+            <form th:if="${!me.getUsersIFollow().contains(user)}" action="/follow" method="post">
+                <input type="hidden" name="followUser" th:value="${user.id}">
+                <input class="button" type="submit" value="Follow !" />
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

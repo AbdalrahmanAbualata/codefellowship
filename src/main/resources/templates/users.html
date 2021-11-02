@@ -6,15 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User's Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
 background-size: cover">
 <header th:insert="header.html :: header"></header>
-<h2>Welcome <span th:text=${usernameForVisitor}></span> To User's Details Page..</h2>
+<h2>Welcome <span th:text=${theVisitor.username}></span> To User's Details Page..</h2>
 <div>
     <h2>This is <span th:text=${userForOwner.username}></span>'s page</h2>
+    <form th:if="${userForOwner.username} != ${#authentication.name} and ${!theVisitor.getUsersIFollow().contains(userForOwner)}" action="/follow" method="post">
+        <input type="hidden" name="followUser" th:value="${userForOwner.id}">
+        <input class="button" type="submit" value="Follow !" />
+    </form>
     <p>Profile picture: </p>
-    <img src="https://www.computerhope.com/jargon/g/guest-user.jpg" alt="user's image">
+    <img  width="500px" th:src="@{/img/profile_avatar_icon.png}" alt="user's image">
     <p>Username: <span th:text=${userForOwner.username}></span></p>
     <p>First Name: <span th:text=${userForOwner.firstName}></span></p>
     <p>Last Name: <span th:text=${userForOwner.lastName}></span></p>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -61,19 +62,52 @@ public class ApplicationUserController {
             return "Profile";
         }
     }
+    @GetMapping("/users")
+    public String getAllUsers( Model model, Principal principal) {
+        List<ApplicationUser> allUsers = (List<ApplicationUser>) applicationUserRepository.findAll();
+        ApplicationUser me = applicationUserRepository.findByUsername(principal.getName());
+        model.addAttribute("users", allUsers);
+        model.addAttribute("me", me);
+        return "allUsers";
+    }
+
 
     @GetMapping("/users/{id}")
-    public String getUserPage(Principal p,Model m, @PathVariable long id){
+    public String getUserPage(Principal principal,Model m, @PathVariable long id){
         try {
-            String username = p.getName();
+            ApplicationUser me = applicationUserRepository.findByUsername(principal.getName());
+
            ApplicationUser user = applicationUserRepository.findUserById(id);
             m.addAttribute("userForOwner", user);
-            m.addAttribute("usernameForVisitor", username);
+            m.addAttribute("theVisitor", me);
             return "users";
         }
         catch(Exception e){
             return "users";
         }
+    }
+    @PostMapping ("/follow")
+    public RedirectView followUser(Principal p, long followUser) {
+        ApplicationUser follower = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser poster = applicationUserRepository.getOne(followUser);
+        follower.followUser(poster);
+
+        applicationUserRepository.save(follower);
+
+        return new RedirectView("/Profile");
+    }
+
+    @GetMapping ("/usersIfollow")
+    public String usersIfollow(Principal p,Model m) {
+        ApplicationUser myObject = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("userForOwner", myObject);
+        return "usersIFollowed";
+    }
+    @GetMapping ("/usersFollowingMe")
+    public String usersFollowingMe(Principal p,Model m) {
+        ApplicationUser myObject = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("userForOwner", myObject);
+        return "userFollowingMe";
     }
 
 
