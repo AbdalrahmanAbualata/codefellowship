@@ -6,7 +6,7 @@
 $ ./gradlew bootRun
 
 ## Localhost
-* localhost:8181
+* localhost:8080
 
 ## application properties:
 - after you clone this repo make sure to edit application.properties.
@@ -20,4 +20,12 @@ $ ./gradlew bootRun
 - ("/"): to get home page
 - ("/login"): to login
 - ("/signup"): to signup
-- ("/userProfile"): to see your profile and posts.
+- ("/Profile"): to see your profile and posts.
+- ("/addPost"): to add a post
+-("/allUsers"): to see all users and follow them.
+- ("/feed"): to see posts of your followers.
+- ("/error"): this page appears if there is problem in other pages.
+- ("/index"): to see home page.
+- ("/users"): to see other users  pages.
+-("/userFollowingMe"): to see who is following you.
+-("/usersIFollowed"): to see all users you are following.

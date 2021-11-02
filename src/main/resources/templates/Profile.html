@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User's Page</title>
-    <link
-            rel="stylesheet"
-            type="text/css"
-            th:href="@{~/styles/style.css}"
-    />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
 background-size: cover">
 <header th:insert="header.html :: header"></header>
 <div th:if="${user != null}">
     <h2>This is <span th:text=${user.username}></span>'s page</h2>
+    <button><a href="/usersIfollow">Following</a></button>
+    <button><a href="/usersFollowingMe">followers</a></button>
     <p>Profile picture: </p>
-    <img src="https://www.computerhope.com/jargon/g/guest-user.jpg" alt="user's image">
+    <img width="500px" th:src="@{/img/profile_avatar_icon.png}" alt="user's image">
     <p>Username: <span th:text=${user.username}></span></p>
     <p>First Name: <span th:text=${user.firstName}></span></p>
     <p>Last Name: <span th:text=${user.lastName}></span></p>
