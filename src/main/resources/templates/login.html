@@ -13,20 +13,33 @@
 <body style="background-image: url('https://i.stack.imgur.com/jGlzr.png'); background-repeat: no-repeat;
 background-size: cover">
 <header th:insert="header.html :: header"></header>
-<form action="perform_login" method='POST'>
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' /></td>
-        </tr>
-        <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
-        </tr>
-    </table>
+<!--<form action="perform_login" method='POST'>-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>User:</td>-->
+<!--            <td><input type='text' name='username' value=''></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Password:</td>-->
+<!--            <td><input type='password' name='password' /></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><input name="submit" type="submit" value="submit" /></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</form>-->
+<div id="login">
+ -<form action="perform_login" method='POST'>
+    <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" id="password" name="password" type="password" placeholder="password">
+    </div>
+    <input name="submit" type="submit" value="submit" />
 </form>
+</div>
 </body>
 </html>

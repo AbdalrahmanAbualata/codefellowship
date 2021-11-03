@@ -28,10 +28,10 @@ background-size: cover">
 <!--    </th:block>-->
 <!--</div>-->
 
-<div class="row">
+<div  class="row">
     <div th:each="user:${peopleIfollowList}" class="card" style="width: 18rem;margin: 10px;">
         <h5 class=" card-title" ><a th:href="${'/users/' + user.id}">[[${user.username}]]</a></h5>
-        <div class="card-body" >
+        <div id="post" class="card-body"  >
             <th:block th:each="post: ${user.posts}">
             <p th:text="${post.timeStamp}" class="card-text"></p>
                 <p th:text="${post.body}" class="card-text"></p>
