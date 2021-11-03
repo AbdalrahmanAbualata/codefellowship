@@ -8,9 +8,14 @@
 
     header {
     width: 100%;
-    height: 12vh;
-    background:#EADCA6;
+    height: 15vh;
+    background:#645e4e26;
+    margin-bottom: 50px;
 
+    }
+    header h1 {
+        font-size:2.5rem;
+        color:whitesmoke;
     }
 
     nav {
@@ -32,4 +37,12 @@
     font-weight: bold;
     font-size: 15px;
     text-align:center;
+    }
+    #post {
+        overflow: overlay;
+        height: 13em;
+    }
+    #login{
+        width:502px;
+        margin-left: 35%;
     }
