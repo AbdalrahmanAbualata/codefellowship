@@ -76,7 +76,6 @@ public class ApplicationUserController {
     public String getUserPage(Principal principal,Model m, @PathVariable long id){
         try {
             ApplicationUser me = applicationUserRepository.findByUsername(principal.getName());
-
            ApplicationUser user = applicationUserRepository.findUserById(id);
             m.addAttribute("userForOwner", user);
             m.addAttribute("theVisitor", me);
